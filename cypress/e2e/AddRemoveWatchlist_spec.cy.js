@@ -28,8 +28,6 @@ describe("Adding/Removing from Watchlist", () => {
     })
     cy.visit("http://localhost:3000/")
     cy.wait("@gqlusersQuery")
-    cy.get('[type="text"]').type("snoop_dogg")
-    cy.get('[type="password"]').type("streamr")
     cy.get("button").click()
     cy.wait("@gqlfetchUserQuery")
     cy.get(".home-container a").first().click()

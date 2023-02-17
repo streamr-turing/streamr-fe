@@ -18,8 +18,8 @@ const LoginPage = () => {
   const [getUser] = useLazyQuery(GET_USER)
   const [allUsers, setAllUsers] = useState([])
   const [signInData, setSignInData] = useState({
-    username: '',
-    password: '',
+    username: 'snoop_dogg',
+    password: 'streamr',
     validSignIn: true,
     loggedIn: false,
     successUserId: null

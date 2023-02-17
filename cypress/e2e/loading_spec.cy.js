@@ -17,8 +17,6 @@ describe('Testing Loading Message', () => {
                 fixture: 'home-view-currentUser-recommendations.json'
             })
         })
-        cy.get('[type="text"]').type('snoop_dogg')
-        cy.get('[type="password"]').type('streamr')
         cy.get('button').click()
         cy.wait('@gqlfetchUserQuery')
     })

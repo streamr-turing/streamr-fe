@@ -1,4 +1,4 @@
-import { aliasQuery, aliasBadQuery, aliasMutation } from "../utilities/graphql-test-utils"
+import { aliasQuery, aliasMutation } from "../utilities/graphql-test-utils"
 
 describe('Testing Recommendation Modal', () => {
 
@@ -18,8 +18,6 @@ describe('Testing Recommendation Modal', () => {
               fixture: 'recModal-currentUser.json'
             })
           })
-          cy.get('[type="text"]').type('snoop_dogg')
-          cy.get('[type="password"]').type('streamr')
           cy.get('button').click()
           cy.wait('@gqlfetchUserQuery')
           cy.get('#watchlist-button > p').click()
@@ -134,8 +132,6 @@ describe('Testing Recommendation Modal', () => {
               fixture: 'recModal-currentUser.json'
             })
           })
-          cy.get('[type="text"]').type('snoop_dogg')
-          cy.get('[type="password"]').type('streamr')
           cy.get('button').click()
           cy.wait('@gqlfetchUserQuery')
  
@@ -186,8 +182,6 @@ describe('Testing Recommendation Modal', () => {
               fixture: 'recModal-currentUser.json'
             })
           })
-          cy.get('[type="text"]').type('snoop_dogg')
-          cy.get('[type="password"]').type('streamr')
           cy.get('button').click()
           cy.wait('@gqlfetchUserQuery')
           cy.get('#watchlist-button > p').click()
@@ -241,8 +235,6 @@ describe('Testing Recommendation Modal', () => {
       })
       cy.visit("http://localhost:3000/")
       cy.wait("@gqlusersQuery")
-      cy.get('[type="text"]').type("snoop_dogg")
-      cy.get('[type="password"]').type("streamr")
       cy.get("button").click()
       cy.wait("@gqlfetchUserQuery")
       cy.get(':nth-child(1) > :nth-child(3) > .recommendee-card-container > .clickable-poster > .poster-img').click()

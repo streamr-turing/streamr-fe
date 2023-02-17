@@ -10,15 +10,13 @@ describe('Testing Home Page Header, Page Name, and Nav Bar', () => {
         })
         cy.visit('http://localhost:3000/')
         cy.wait('@gqlusersQuery')
-
         cy.intercept('POST', 'https://streamr-be.herokuapp.com/graphql', (req) => {
             aliasQuery(req, 'fetchUser')
             req.reply({
                 fixture: 'home-view-currentUser-recommendations.json'
             })
         })
-        cy.get('[type="text"]').type('snoop_dogg')
-        cy.get('[type="password"]').type('streamr')
+
         cy.get('button').click()
         cy.wait('@gqlfetchUserQuery')
     })
@@ -51,15 +49,12 @@ describe('Testing Home Page Navigation to Detail, Search View, and Watch List Vi
         })
         cy.visit('http://localhost:3000/')
         cy.wait('@gqlusersQuery')
-
         cy.intercept('POST', 'https://streamr-be.herokuapp.com/graphql', (req) => {
             aliasQuery(req, 'fetchUser')
             req.reply({
                 fixture: 'home-view-currentUser-recommendations.json'
             })
         })
-        cy.get('[type="text"]').type('snoop_dogg')
-        cy.get('[type="password"]').type('streamr')
         cy.get('button').click()
         cy.wait('@gqlfetchUserQuery')
     })
@@ -129,15 +124,12 @@ describe('Testing Home Page If Given Recommended Shows', () => {
         })
         cy.visit('http://localhost:3000/')
         cy.wait('@gqlusersQuery')
-
         cy.intercept('POST', 'https://streamr-be.herokuapp.com/graphql', (req) => {
             aliasQuery(req, 'fetchUser')
             req.reply({
                 fixture: 'home-view-currentUser-recommendations.json'
             })
         })
-        cy.get('[type="text"]').type('snoop_dogg')
-        cy.get('[type="password"]').type('streamr')
         cy.get('button').click()
         cy.wait('@gqlfetchUserQuery')
     })
@@ -195,15 +187,12 @@ describe('Testing Home Page If Not Given Recommended Shows', () => {
         })
         cy.visit('http://localhost:3000/')
         cy.wait('@gqlusersQuery')
-
         cy.intercept('POST', 'https://streamr-be.herokuapp.com/graphql', (req) => {
             aliasQuery(req, 'fetchUser')
             req.reply({
                 fixture: 'home-view-currentUser-no-recommendations.json'
             })
         })
-        cy.get('[type="text"]').type('snoop_dogg')
-        cy.get('[type="password"]').type('streamr')
         cy.get('button').click()
         cy.wait('@gqlfetchUserQuery')
     })

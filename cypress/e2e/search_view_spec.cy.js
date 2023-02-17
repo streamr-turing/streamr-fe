@@ -17,8 +17,6 @@ describe('Testing Search Page Header, Nav Bar, and Page Name', () => {
                 fixture: 'home-view-currentUser-recommendations.json'
             })
         })
-        cy.get('[type="text"]').type('snoop_dogg')
-        cy.get('[type="password"]').type('streamr')
         cy.get('button').click()
         cy.wait('@gqlfetchUserQuery')
 
@@ -69,8 +67,6 @@ describe('Testing Search Page With Show Results', () => {
                 fixture: 'home-view-currentUser-recommendations.json'
             })
         })
-        cy.get('[type="text"]').type('snoop_dogg')
-        cy.get('[type="password"]').type('streamr')
         cy.get('button').click()
         cy.wait('@gqlfetchUserQuery')
 
@@ -135,8 +131,6 @@ describe('Testing Search Page With No Show Results', () => {
                 fixture: 'home-view-currentUser-recommendations.json'
             })
         })
-        cy.get('[type="text"]').type('snoop_dogg')
-        cy.get('[type="password"]').type('streamr')
         cy.get('button').click()
         cy.wait('@gqlfetchUserQuery')
 
@@ -204,8 +198,6 @@ describe('Testing Search Page Navigating to Detail View, Home View, and Watch Li
                 fixture: 'home-view-currentUser-recommendations.json'
             })
         })
-        cy.get('[type="text"]').type('snoop_dogg')
-        cy.get('[type="password"]').type('streamr')
         cy.get('button').click()
         cy.wait('@gqlfetchUserQuery')
 
@@ -266,8 +258,6 @@ describe("Search View (bad response)", () => {
       })
       cy.visit("http://localhost:3000/")
       cy.wait("@gqlusersQuery")
-      cy.get('[type="text"]').type("snoop_dogg")
-      cy.get('[type="password"]').type("streamr")
       cy.get("button").click()
       cy.wait("@gqlfetchUserQuery")
       cy.get('.search-input').type('spongebob')

@@ -17,8 +17,6 @@ describe('Testing Home Page with items in Watchlist', () => {
         fixture: 'watchlist-currentUser.json'
       })
     })
-    cy.get('[type="text"]').type('snoop_dogg')
-    cy.get('[type="password"]').type('streamr')
     cy.get('button').click()
     cy.wait('@gqlfetchUserQuery')
     cy.get('#watchlist-button > p').click()
@@ -168,8 +166,6 @@ describe('Testing Home Page with no saved shows in Watchlist', () => {
         fixture: 'watchlist-currentUser-no-watchlist-items.json'
       })
     })
-    cy.get('[type="text"]').type('snoop_dogg')
-    cy.get('[type="password"]').type('streamr')
     cy.get('button').click()
     cy.wait('@gqlfetchUserQuery')
     cy.get('#watchlist-button > p').click()

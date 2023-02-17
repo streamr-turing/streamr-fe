@@ -34,15 +34,18 @@ describe('Testing Login Page', () => {
         fixture: 'login-currentUser.json'
       })
     })
+    cy.get('[type="text"]').clear()
+    cy.get('[type="password"]').clear()
     cy.get('[type="text"]').type('snoop_dogg')
     cy.get('[type="password"]').type('streamr')
+    cy.get('[type="text"]').should("have.value", "snoop_dogg")
+    cy.get('[type="password"]').should("have.value", "streamr")
     cy.get('button').click()
     cy.wait('@gqlfetchUserQuery')
   })
 
   it('Should see an invalid username/ password message if input an invalid username and click submit', () => {
-    cy.get('[type="text"]').type('banana')
-    cy.get('[type="password"]').type('streamr')
+    cy.get('[type="text"]').clear().type('banana')
     cy.get('button').click()
 
     cy.get('p').should('be.visible')
@@ -50,8 +53,7 @@ describe('Testing Login Page', () => {
   })
 
   it('Should see an invalid username/ password message if input an invalid password and click submit', () => {
-    cy.get('[type="text"]').type('snoop_dogg')
-    cy.get('[type="password"]').type('banana')
+    cy.get('[type="password"]').clear().type('banana')
     cy.get('button').click()
 
     cy.get('p').should('be.visible')
@@ -59,7 +61,7 @@ describe('Testing Login Page', () => {
   })
 
   it('Should see an invalid username/ password message if username input is left empty and click submit', () => {
-    cy.get('[type="password"]').type('streamr')
+    cy.get('[type="text"]').clear()
     cy.get('button').click()
 
     cy.get('p').should('be.visible')
@@ -67,7 +69,7 @@ describe('Testing Login Page', () => {
   })
 
   it('Should see an invalid username/ password message if password input is left empty and click submit', () => {
-    cy.get('[type="text"]').type('snoop_dogg')
+    cy.get('[type="password"]').clear()
     cy.get('button').click()
 
     cy.get('p').should('be.visible')
@@ -75,6 +77,8 @@ describe('Testing Login Page', () => {
   })
 
   it('Should see an invalid username/ password message if password and username inputs are left empty and click submit', () => {
+    cy.get('[type="text"]').clear()
+    cy.get('[type="password"]').clear()
     cy.get('button').click()
 
     cy.get('p').should('be.visible')
@@ -98,8 +102,6 @@ describe("Login Page (bad response)", () => {
     })
     cy.visit("http://localhost:3000/")
     cy.wait("@gqlusersQuery")
-    cy.get('[type="text"]').type("snoop_dogg")
-    cy.get('[type="password"]').type("streamr")
     cy.get("button").click()
     cy.wait("@gqlfetchUserQuery")
   })
